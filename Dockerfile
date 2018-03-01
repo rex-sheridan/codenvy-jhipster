@@ -22,6 +22,11 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - && \
 # install yeoman bower gulp jhipster
 RUN sudo yarn global add yo bower gulp-cli generator-jhipster
 
+# install sdkman from http://sdkman.io/
+RUN curl -s "https://get.sdkman.io" | bash
+
+RUN sdk install gradle 4.6
+
 EXPOSE 6080 8080 9000 3001
 WORKDIR /projects
 CMD sudo /usr/sbin/sshd -D && \
