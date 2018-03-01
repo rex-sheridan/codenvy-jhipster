@@ -22,6 +22,10 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - && \
 # install yeoman bower gulp jhipster
 RUN sudo yarn global add yo bower gulp-cli generator-jhipster
 
+RUN sudo apt-get install zip
+
+RUN sudo apt-get install unzip
+
 # install sdkman from http://sdkman.io/
 RUN curl -s "https://get.sdkman.io" | bash
 
