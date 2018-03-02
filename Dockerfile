@@ -17,19 +17,13 @@ RUN curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash - && \
 # install yarn
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - && \
     echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list && \
-    sudo apt-get update && sudo apt-get install yarn
+    sudo apt-get update && sudo apt-get install yarn  && sudo apt-get install zip
 
 # install yeoman bower gulp jhipster
 RUN sudo yarn global add yo bower gulp-cli generator-jhipster
 
-RUN sudo apt-get install zip
-
-RUN sudo apt-get install unzip
-
 # install sdkman from http://sdkman.io/
-RUN curl -s "https://get.sdkman.io" | bash
-
-RUN sdk install gradle 4.6
+RUN curl -s "https://get.sdkman.io" | bash && echo 'source /home/user/.sdkman/bin/sdkman-init.sh; sdk install gradle 4.6' | bash
 
 EXPOSE 6080 8080 9000 3001
 WORKDIR /projects
